@@ -4,11 +4,6 @@ const STATE_UPDATE = "STATE_UPDATE"
 
 const defaultState = () => ({ list1: { }, currentList: "list1" })
 
-const updateStateEvent = (newState) => {
-  window.dispatchEvent( new CustomEvent(STATE_UPDATE, { detail: newState }) )
-}
-
-
 const updateStorage = ({ detail }) => {
 
 }
