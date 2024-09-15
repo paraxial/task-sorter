@@ -1,4 +1,5 @@
-const STORAGE_KEY = "task-sorter-20240915";
+import Store, { STORAGE_KEY } from "./js/store.js"
+
 const STATE_UPDATE = "STATE_UPDATE"
 
 const defaultState = () => ({ list1: { }, currentList: "list1" })
@@ -35,6 +36,8 @@ const receiveTasks = (e) => {
 
 const main = () => {
   const state = window.localStorage.getItem(STORAGE_KEY) || defaultState()
+
+  const store = new Store({ state })
 
   window.addEventListener(STATE_UPDATE, updateStorage);
   window.addEventListener(STATE_UPDATE, renderInbox);
