@@ -2,12 +2,16 @@
   box-sizing: border-box;
   font-family: "Atkinson Hyperlegible", system-ui;
   font-weight: 400;
+
   font-style: normal;
 }
 
 :root {
+  --dark-purple: #230b3d;
   --purple: #4a2697;
   --teal: #4a8a97;
+
+  --s-radius: 1rem;
 }
 
 html {
@@ -15,15 +19,24 @@ html {
   height: 100%;
 }
 
+h1, h2 {
+  margin: 0;
+}
+
 body {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
 
   padding: 2rem;
   margin: 0;
 
-  background: linear-gradient(180deg, var(--purple) 0%, var(--teal) 100%) no-repeat;
+  background: linear-gradient(180deg, var(--purple) 0%, var(--teal) 100%);
+  background-attachment: fixed;
   color: white;
+  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
 }
 
 main {
@@ -32,7 +45,7 @@ main {
 }
 
 .visual-box {
-  border-radius: 1rem;
+  border-radius: var(--s-radius);
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   margin: 0.5rem;
@@ -40,4 +53,27 @@ main {
 
 .list {
   width: 25rem;
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.task {
+  --task-sizes: 0.5rem;
+  border-radius: var(--task-sizes);
+  padding: var(--task-sizes);
+  margin: var(--task-sizes) 0;
+  text-shadow: none;
+  filter: drop-shadow(0 0 0.2rem var(--dark-purple));
+
+  background: white;
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  .task {
+    background: var(--dark-purple);
+    color: white;
+  }
 }

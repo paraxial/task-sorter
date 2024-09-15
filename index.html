@@ -9,13 +9,13 @@
     href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
   <link href="./styles.css" rel="stylesheet" />
-  <script src="./entry.js"></script>
+  <script src="./main.js"></script>
 </head>
 
 <body>
   <h1 class="visual-box">Task Sorter</h1>
   <nav class="visual-box">
-    <a data-list-anchor></a>
+    <section data-list-anchor></section>
     <form data-list-form>
       <label>
         Add a list
@@ -26,13 +26,13 @@
   </nav>
   <main>
     <section class="list visual-box">
-      <h1>Inbox (chronological)</h1>
-      <a data-inbox-anchor></a>
+      <h2>Inbox (chronological)</h2>
+      <section data-inbox-anchor></section>
       <form data-task-form>
         <div>
           <label>
             Add a task
-            <input name="task-name" type="text" />
+            <input name="task-name" type="text" required />
           </label>
           <button type="submit">+</button>
         </div>
