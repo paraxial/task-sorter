@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  font-family: "Atkinson Hyperlegible", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --purple: #4a2697;
+  --teal: #4a8a97;
+}
+
+html {
+  background-color: var(--purple);
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  padding: 2rem;
+  margin: 0;
+
+  background: linear-gradient(180deg, var(--purple) 0%, var(--teal) 100%) no-repeat;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.visual-box {
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.list {
+  width: 25rem;
+}

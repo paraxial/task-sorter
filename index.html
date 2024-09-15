@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Task Sorter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet" />
+  <script src="./entry.js"></script>
+</head>
+
+<body>
+  <h1 class="visual-box">Task Sorter</h1>
+  <nav class="visual-box">
+    <a data-list-anchor></a>
+    <form data-list-form>
+      <label>
+        Add a list
+        <input name="list-name" type="text" />
+      </label>
+      <button type="submit">+</button>
+    </form>
+  </nav>
+  <main>
+    <section class="list visual-box">
+      <h1>Inbox (chronological)</h1>
+      <a data-inbox-anchor></a>
+      <form data-task-form>
+        <div>
+          <label>
+            Add a task
+            <input name="task-name" type="text" />
+          </label>
+          <button type="submit">+</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>
