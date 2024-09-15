@@ -65,6 +65,11 @@ hr {
   gap: 0.5rem;
 }
 
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
 .task {
   --task-sizes: 0.5rem;
   border-radius: var(--task-sizes);

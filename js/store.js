@@ -1,69 +1,71 @@
-import EventBus from './event-bus.js'
-
 export const STORAGE_KEY = "task-sorter-20240915";
 export const STATE_UPDATED = "STATE_UPDATED"
 
-/*
-  Largely adapted from this tutorial:
-  https://css-tricks.com/build-a-state-management-system-with-vanilla-javascript/
-  with thanks to Andy Bell.
-*/
-export default class Store {
-  constructor(params) {
-    let self = this;
-    self.status = 'resting'
-    self.events = new EventBus();
+const UPDATE_TASK = "UPDATE_TASK"
+const ADD_TASK = "ADD_TASK"
+const DELETE_TASK = "DELETE_TASK"
 
-    self.actions = Object.hasOwn(params, 'actions') ? params.actions : {}
+export const defaultState = () => ({
+  tasks: {
+    test: { id: "test", name: "Test Item 1", createdAt: Date.now() }
+  }
+})
 
-    self.state = new Proxy((params.state || {}), {
-      set: (state, key, value) => {
-        state[key] = value
-        document.localStorage.setKey(STORAGE_KEY, state)
+export const addTask = (store, name) => {
+  const state = store.state
+  const newId = self.crypto.randomUUID()
+  store.dispatch(ADD_TASK, {
+    ...state,
+    tasks: {
+      ...state.tasks,
+      [newId]: { name, id: newId, createdAt: Date.now() }
+    }
+  })
+}
 
-        console.log({ state, key, value })
+export const updateTask = (store, id, name) => {
+  const state = store.state
+  const tasks = state.tasks
 
-        self.events.publish(STATE_UPDATED, self.state)
+  const existingTask = tasks.get(id)
+  store.dispatch(UPDATE_TASK, {
+    ...state,
+    tasks: {
+      ...tasks,
+      [id]: { ...existingTask, name }
+    }
+  })
+}
 
-        if (self.status !== 'mutation') {
-          console.warn(`Use a mutation to set ${key}`)
-        }
+export const deleteTask = (store, id) => {
+  const { state } = store
+  const { [id]: _, ...tasks } = state.tasks
+  context.dispatch(DELETE_TASK, {...state, tasks})
+}
 
-        self.status = 'resting'
-
-        return true
-      }
-    })
+export class Store {
+  constructor({ state }) {
+    this._state = state || {};
   }
 
-  dispatch(key, payload) {
-    let self = this;
-
-    if(typeof self.actions[key] !== 'function') {
-      console.error(`Action ${key} does not exist.`)
-      return false
-    }
-
-    console.groupCollapsed({key})
-      self.status = 'action'
-      self.actions[key](self, payload)
-    console.groupEnd()
-
-    return true
+  get state() {
+    return this._state
   }
 
-  commit(key, payload) {
-    let self = this;
-    if(typeof self.mutations[key] !== 'function') {
-      console.warn(`Mutation ${key} does not exist`)
-      return false
-    }
+  set state(newState) {
+    this._state = newState
+  }
 
-    self.status = 'mutation';
+  dispatch(action, newState) {
+    this._state = newState;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(newState))
 
-    const newState = self.mutations[key](self.state, payload)
-    self.state = { ...self.state, ...newState }
+    window.dispatchEvent(new CustomEvent(STATE_UPDATED, { detail: action }));
 
     return true
   }
 }
+
+const initialisedStore = (state) => (new Store({ state: state || defaultState() }))
+
+export default initialisedStore;
