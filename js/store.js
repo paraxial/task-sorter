@@ -6,9 +6,7 @@ export const ADD_TASK = "ADD_TASK"
 export const DELETE_TASK = "DELETE_TASK"
 
 export const defaultState = () => ({
-  tasks: {
-    test: { id: "test", name: "Test Item 1", createdAt: Date.now() }
-  }
+  tasks: {}
 })
 
 export const addTask = (store, name) => {
