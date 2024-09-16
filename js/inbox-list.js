@@ -14,7 +14,7 @@ export default class InboxList {
   get element() { return this._element }
 
   render() {
-    if(this.tasks.length === 0) {
+    if (this.tasks.length === 0) {
       const p = document.createElement("p")
       p.textContent = "Add some items to get started."
 
@@ -22,14 +22,16 @@ export default class InboxList {
       return;
     }
 
-    this.element.innerHTML = `
-      <ul class="task-list">
-        ${
-          this.tasks.map(item => {
-            return `<li class="task">${item.name}</li>`
-          }).join('')
-        }
-      </ul>
-    `;
+    const ul = document.createElement("ul")
+    ul.className = "task-list"
+
+    this.tasks.forEach(item => {
+      const li = document.createElement("li")
+      li.className = "task"
+      li.textContent = item.name
+      ul.appendChild(li)
+    })
+
+    this.element.replaceChildren(ul)
   }
 }
