@@ -1,9 +1,9 @@
 export const STORAGE_KEY = "task-sorter-20240915";
 export const STATE_UPDATED = "STATE_UPDATED"
 
-const UPDATE_TASK = "UPDATE_TASK"
-const ADD_TASK = "ADD_TASK"
-const DELETE_TASK = "DELETE_TASK"
+export const UPDATE_TASK = "UPDATE_TASK"
+export const ADD_TASK = "ADD_TASK"
+export const DELETE_TASK = "DELETE_TASK"
 
 export const defaultState = () => ({
   tasks: {
@@ -40,7 +40,7 @@ export const updateTask = (store, id, name) => {
 export const deleteTask = (store, id) => {
   const { state } = store
   const { [id]: _, ...tasks } = state.tasks
-  context.dispatch(DELETE_TASK, {...state, tasks})
+  store.dispatch(DELETE_TASK, {...state, tasks})
 }
 
 export class Store {

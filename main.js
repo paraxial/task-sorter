@@ -1,5 +1,5 @@
 import InboxList from "./js/inbox-list.js"
-import initialisedStore, { STORAGE_KEY, STATE_UPDATED, addTask } from "./js/store.js"
+import initialisedStore, { STORAGE_KEY, STATE_UPDATED, addTask, DELETE_TASK, deleteTask } from "./js/store.js"
 
 const main = () => {
   const state = JSON.parse(self.localStorage.getItem(STORAGE_KEY))
@@ -8,7 +8,7 @@ const main = () => {
   const renderInbox = () => {
     const tasks = Object.values(store.state.tasks || {})
 
-    return new InboxList(tasks).render()
+    return new InboxList({ tasks }).render()
   }
 
   const receiveTasks = (e) => {
@@ -22,12 +22,21 @@ const main = () => {
     form.reset()
   }
 
+  const handleDelete = (event) => {
+    deleteTask(store, event.detail)
+  }
+
+  const handleEditModal = ({ detail }) => {
+    console.log(`requesting to edit ${detail}`)
+  }
+
   window.addEventListener(STATE_UPDATED, renderInbox);
+  window.addEventListener(DELETE_TASK, handleDelete)
+  window.addEventListener("TASK_EDIT_UI", handleEditModal)
 
   const taskForm = document.querySelector("[data-task-form]");
   taskForm.addEventListener("submit", receiveTasks);
 
-  console.log({state, store})
   renderInbox()
 }
 

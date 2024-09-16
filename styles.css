@@ -80,6 +80,35 @@ hr {
 
   background: white;
   color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  all: unset;
+  background-color: var(--dark-purple);
+  color: white;
+  padding: 0.25rem;
+  min-height: 1rem;
+  min-width: 1rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+button:hover {
+  filter: drop-shadow(0 0 0.2rem white);
+}
+
+button:focus {
+  outline: revert;
+}
+
+.button {
+  height: 1rem;
+  width: 1rem;
+  margin: 0.2rem;
+  border: 1px solid white;
 }
 
 @media (prefers-color-scheme: dark) {
