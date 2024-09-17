@@ -13,6 +13,99 @@
   <link href="./styles.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/ed453297d4.js" crossorigin="anonymous"></script>
   <script src="./main.js" type="module"></script>
+
+  <template data-template-dialog>
+    <style>
+      .button {
+        border-radius: 50%;
+        height: 1.5rem;
+        width: 1.5rem;
+        margin: var(--common-radius);
+        padding: var(--common-radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button:hover {
+        filter: drop-shadow(0 0 var(--common-radius) var(--dark-purple));
+      }
+
+      .button-text {
+        min-height: 1rem;
+        margin: var(--common-radius);
+        border: 1px solid white;
+        border-radius: var(--common-radius);
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 0.5rem;
+        background-color: var(--dark-purple);
+        color: white;
+      }
+
+      .button-text:hover {
+        filter: drop-shadow(0 0 var(--common-radius) white);
+      }
+
+      .light {
+        background: white;
+        color: var(--dark-purple);
+        text-shadow: none;
+        border: 1px solid var(--dark-purple);
+      }
+
+      .button.light:hover {
+        filter: drop-shadow(0 0 var(--common-radius) var(--dark-purple));
+      }
+
+      dialog {
+        width: 20rem;
+      }
+
+      .modal-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--dark-purple);
+        padding-bottom: 1rem;
+      }
+
+      .modal-body {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+    <button class="button-text">
+      <slot name="modal-trigger">Trigger</slot>
+    </button>
+    <dialog class="light modal">
+      <section class="modal-header">
+        <h3>
+          <slot name="modal-title">Title</slot>
+        </h3>
+        <form method="dialog">
+          <button class="button light">🗙</button>
+        </form>
+      </section>
+      <section class="modal-body">
+        <slot name="modal-content">
+          Body
+        </slot>
+      </section>
+    </dialog>
+  </template>
+
+  <template data-template-list>
+    <section class="list visual-box">
+      <h2 slot="list-title"></h2>
+      <section class="list-anchor">
+        <ul slot="list-content" class="task-list">
+        </ul>
+      </section>
+    </section>
+  </template>
 </head>
 
 <body>
@@ -47,40 +140,37 @@
   <hr>
   <footer>
     <button data-about-button class="button-text"><i class="fa fa-solid fa-info"></i><span>About site</span></button>
-      <dialog data-about-section class="light modal">
-        <section class="modal-header">
-          <h3>About</h3>
-          <button data-about-close-button class="button light fa fa-solid fa-xmark"></button>
-        </section>
-        <section class="modal-body">
-          <p>
-            This site was built without any Javascript framework or build pipeline, with the state of the art in 2024.
-          </p>
-          <p>
-            It serves as an interesting experiment for me to feel out what the state of the web is at the moment.
-            I think I'd stick with a framework in future, but I had a lot of fun wiring everything up with JS events.
-          </p>
-          <p>I'm trying to keep an up-to-date set of my various productivity utilities over on <a
-              href="https://paraxial.github.io">my github page</a>.</p>
-          <small>
-            This was built for 🍄
-          </small>
-        </section>
-      </dialog>
-  </footer>
-</body>
-  <template data-template-dialog>
-    <button data-open-button slot="modal-trigger" class="button-text"></button>
-    <dialog class="light modal">
+    <dialog data-about-section class="light modal">
       <section class="modal-header">
-        <h3 slot="modal-title">Title</h3>
-        <button data-close-button class="button light fa fa-solid fa-xmark"></button>
+        <h3>About</h3>
+        <form method="dialog">
+          <button data-about-close-button class="button light fa fa-solid fa-xmark"></button>
+        </form>
       </section>
-      <section slot="modal-content" class="modal-body">
-        Body
+      <section class="modal-body">
+        <p>
+          This site was built without any Javascript framework or build pipeline, with the state of the art in 2024.
+        </p>
+        <p>
+          It serves as an interesting experiment for me to feel out what the state of the web is at the moment.
+          I think I'd stick with a framework in future, but I had a lot of fun wiring everything up with JS events.
+        </p>
+        <p>I'm trying to keep an up-to-date set of my various productivity utilities over on <a
+            href="https://paraxial.github.io">my github page</a>.</p>
+        <small>
+          This was built for 🍄
+        </small>
       </section>
     </dialog>
-  </template>
-  <template data-template-list>
-  </template>
+    <custom-dialog>
+      <span slot="modal-trigger">Heck yeah?</span>
+      <span slot="modal-title">Wooo</span>
+      <section slot="modal-content">
+        <p>many</p>
+        <p>paragraphs?</p>
+      </section>
+    </custom-dialog>
+  </footer>
+</body>
+
 </html>

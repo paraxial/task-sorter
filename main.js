@@ -32,16 +32,11 @@ const main = () => {
 
   const addInfoButton = () => {
     const infoButton = document.querySelector("[data-about-button]")
-    const closeButton = document.querySelector("[data-about-close-button]")
     const dialog = document.querySelector("[data-about-section]")
 
     infoButton.addEventListener("click", () => {
       console.log("clicked!")
       dialog.showModal()
-    });
-
-    closeButton.addEventListener("click", () => {
-      dialog.close();
     });
   }
 
@@ -60,16 +55,17 @@ const main = () => {
     class extends HTMLElement {
       constructor() {
         super();
-        const template = document.querySelector("[data-template-dialog]");
-        const templateContent = template.content;
-        const trigger = template.querySelector("[data-open-button]")
-        const openModal = () => {
-          const dialog = template.querySelector("dialog")
-          dialog.openModal()
-        }
-        trigger.addEventListener("click", openModal)
+        const template = document.querySelector("[data-template-dialog]").content;
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.appendChild(template.cloneNode(true));
 
-        document.appendChild(templateContent.cloneNode(true));
+        const trigger = shadowRoot.querySelector("button")
+
+        trigger.addEventListener("click", () => {
+          const dialog = shadowRoot.querySelector("dialog");
+
+          dialog.showModal();
+        })
       }
     },
   );

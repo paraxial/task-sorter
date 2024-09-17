@@ -170,7 +170,7 @@ button:focus {
 }
 
 dialog {
-  max-width: 20rem;
+  width: 20rem;
 }
 
 .modal-header {
