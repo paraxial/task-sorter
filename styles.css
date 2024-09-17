@@ -12,6 +12,7 @@
   --teal: #4a8a97;
 
   --s-radius: 1rem;
+  --header-footer-height: 10rem;
 }
 
 html {
@@ -19,7 +20,7 @@ html {
   height: 100%;
 }
 
-h1, h2 {
+h1, h2, h3 {
   margin: 0;
 }
 
@@ -37,16 +38,27 @@ body {
     1px -1px 0 #000,
     -1px 1px 0 #000,
      1px 1px 0 #000;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
 }
+
+nav {
+  width: 100%;
+}
+
 
 main {
   display: flex;
   flex-direction: row;
+  flex-grow: 1;
 }
 
 hr {
   border: 0;
   height: 1px;
+  width: 100%;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
 }
 
@@ -54,7 +66,6 @@ hr {
   border-radius: var(--s-radius);
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
-  margin: 0.5rem;
 }
 
 .list {
@@ -104,11 +115,47 @@ button:focus {
   outline: revert;
 }
 
+.button-text {
+  height: 1rem;
+  margin: 0.2rem;
+  border: 1px solid white;
+  border-radius: 0.2rem;
+}
+
 .button {
   height: 1rem;
   width: 1rem;
   margin: 0.2rem;
   border: 1px solid white;
+}
+
+.light {
+  background: white;
+  color: var(--dark-purple);
+  text-shadow: none;
+  border: 1px solid var(--dark-purple);
+}
+
+.button.light:hover {
+  filter: drop-shadow(0 0 0.2rem var(--dark-purple));
+}
+
+dialog {
+  max-width: 20rem;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--dark-purple);
+  padding-bottom: 1rem;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (prefers-color-scheme: dark) {

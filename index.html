@@ -3,6 +3,7 @@
 
 <head>
   <title>Task Sorter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,13 +11,13 @@
     href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
   <link href="./styles.css" rel="stylesheet" />
-  <script src="https://use.fontawesome.com/b337015fea.js"></script>
+  <script src="https://kit.fontawesome.com/ed453297d4.js" crossorigin="anonymous"></script>
   <script src="./main.js" type="module"></script>
 </head>
 
 <body>
-  <h1 class="visual-box">Task Sorter</h1>
   <nav class="visual-box">
+    <h1>Task Sorter</h1>
     <section data-list-anchor></section>
     <form data-list-form>
       <label>
@@ -45,6 +46,30 @@
       </form>
     </section>
   </main>
+  <hr>
+  <footer>
+    <button data-about-button class="button-text"><i class="fa fa-solid fa-info"></i>About site</button>
+    <dialog data-about-section class="light modal">
+      <section class="modal-header">
+        <h3>About</h3>
+        <button data-about-close-button class="button light fa fa-solid fa-xmark"></button>
+      </section>
+      <section class="modal-body">
+        <p>
+          This site was built without any javascript framework or build pipeline, with the state of the art in 2024.
+        </p>
+        <p>
+          It serves as an interesting experiment for me to feel out what the state of the web is at the moment.
+          I think I'd stick with a framework in future, but I had a lot of fun wiring everything up with JS events.
+        </p>
+        <p>I'm trying to keep an up-to-date set of my various productivity utilities over on <a
+            href="https://paraxial.github.io">my github page</a></a></p>
+        <small>
+          This was built for Shell.
+        </small>
+      </section>
+    </dialog>
+  </footer>
 </body>
 
 </html>

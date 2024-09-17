@@ -30,6 +30,21 @@ const main = () => {
     console.log(`requesting to edit ${detail}`)
   }
 
+  const addInfoButton = () => {
+    const infoButton = document.querySelector("[data-about-button]")
+    const closeButton = document.querySelector("[data-about-close-button]")
+    const dialog = document.querySelector("[data-about-section]")
+
+    infoButton.addEventListener("click", () => {
+      console.log("clicked!")
+      dialog.showModal()
+    });
+
+    closeButton.addEventListener("click", () => {
+      dialog.close();
+    });
+  }
+
   window.addEventListener(STATE_UPDATED, renderInbox);
   window.addEventListener(DELETE_TASK, handleDelete)
   window.addEventListener("TASK_EDIT_UI", handleEditModal)
@@ -37,6 +52,7 @@ const main = () => {
   const taskForm = document.querySelector("[data-task-form]");
   taskForm.addEventListener("submit", receiveTasks);
 
+  addInfoButton()
   renderInbox()
 }
 
