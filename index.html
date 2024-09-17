@@ -19,7 +19,7 @@
   <nav class="visual-box">
     <h1>Task Sorter</h1>
     <section data-list-anchor></section>
-    <form data-list-form>
+    <form data-list-form class="single-field-form">
       <label>
         Add a list
         <input name="list-name" type="text" />
@@ -35,41 +35,53 @@
     <section class="list visual-box">
       <h2>Inbox (chronological)</h2>
       <section data-inbox-anchor></section>
-      <form data-task-form>
-        <div>
-          <label>
-            Add a task
-            <input name="task-name" type="text" required />
-          </label>
-          <button class="button fa fa-solid fa-plus" type="submit" aria-label="Add a new task"></button>
-        </div>
+      <form data-task-form class="single-field-form">
+        <label>
+          Add a task
+          <input name="task-name" type="text" required />
+        </label>
+        <button class="button fa fa-solid fa-plus" type="submit" aria-label="Add a new task"></button>
       </form>
     </section>
   </main>
   <hr>
   <footer>
-    <button data-about-button class="button-text"><i class="fa fa-solid fa-info"></i>About site</button>
-    <dialog data-about-section class="light modal">
-      <section class="modal-header">
-        <h3>About</h3>
-        <button data-about-close-button class="button light fa fa-solid fa-xmark"></button>
-      </section>
-      <section class="modal-body">
-        <p>
-          This site was built without any javascript framework or build pipeline, with the state of the art in 2024.
-        </p>
-        <p>
-          It serves as an interesting experiment for me to feel out what the state of the web is at the moment.
-          I think I'd stick with a framework in future, but I had a lot of fun wiring everything up with JS events.
-        </p>
-        <p>I'm trying to keep an up-to-date set of my various productivity utilities over on <a
-            href="https://paraxial.github.io">my github page</a></a></p>
-        <small>
-          This was built for Shell.
-        </small>
-      </section>
-    </dialog>
+
+    <button data-about-button class="button-text"><i class="fa fa-solid fa-info"></i><span>About site</span></button>
+      <dialog data-about-section class="light modal">
+        <section class="modal-header">
+          <h3>About</h3>
+          <button data-about-close-button class="button light fa fa-solid fa-xmark"></button>
+        </section>
+        <section class="modal-body">
+          <p>
+            This site was built without any Javascript framework or build pipeline, with the state of the art in 2024.
+          </p>
+          <p>
+            It serves as an interesting experiment for me to feel out what the state of the web is at the moment.
+            I think I'd stick with a framework in future, but I had a lot of fun wiring everything up with JS events.
+          </p>
+          <p>I'm trying to keep an up-to-date set of my various productivity utilities over on <a
+              href="https://paraxial.github.io">my github page</a>.</p>
+          <small>
+            This was built for 🍄
+          </small>
+        </section>
+      </dialog>
   </footer>
 </body>
-
+  <template data-template-dialog>
+    <button data-open-button slot="modal-trigger" class="button-text"></button>
+    <dialog class="light modal">
+      <section class="modal-header">
+        <h3 slot="modal-title">Title</h3>
+        <button data-close-button class="button light fa fa-solid fa-xmark"></button>
+      </section>
+      <section slot="modal-content" class="modal-body">
+        Body
+      </section>
+    </dialog>
+  </template>
+  <template data-template-list>
+  </template>
 </html>

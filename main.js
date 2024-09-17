@@ -54,6 +54,25 @@ const main = () => {
 
   addInfoButton()
   renderInbox()
+
+  customElements.define(
+    "custom-dialog",
+    class extends HTMLElement {
+      constructor() {
+        super();
+        const template = document.querySelector("[data-template-dialog]");
+        const templateContent = template.content;
+        const trigger = template.querySelector("[data-open-button]")
+        const openModal = () => {
+          const dialog = template.querySelector("dialog")
+          dialog.openModal()
+        }
+        trigger.addEventListener("click", openModal)
+
+        document.appendChild(templateContent.cloneNode(true));
+      }
+    },
+  );
 }
 
 document.addEventListener("DOMContentLoaded", main);
