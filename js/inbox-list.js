@@ -20,7 +20,7 @@ export default class InboxList {
       const p = document.createElement("p")
       p.textContent = "Add some tasks to get started."
 
-      this.element.appendChild(p)
+      this.element.replaceChildren(p)
       return;
     }
 

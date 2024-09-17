@@ -69,6 +69,11 @@ hr {
   padding: 1rem;
 }
 
+.list-anchor {
+  flex: 1;
+  overflow-y: scroll;
+}
+
 .list {
   width: 25rem;
   display: flex;
