@@ -86,7 +86,7 @@
           <slot name="modal-title">Title</slot>
         </h3>
         <form method="dialog">
-          <button class="button light">🗙</button>
+          <button class="button light" aria-label="Close modal">✖</button>
         </form>
       </section>
       <section class="modal-body">
@@ -162,14 +162,6 @@
         </small>
       </section>
     </dialog>
-    <custom-dialog>
-      <span slot="modal-trigger">Heck yeah?</span>
-      <span slot="modal-title">Wooo</span>
-      <section slot="modal-content">
-        <p>many</p>
-        <p>paragraphs?</p>
-      </section>
-    </custom-dialog>
   </footer>
 </body>
 

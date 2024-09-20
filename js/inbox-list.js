@@ -1,7 +1,5 @@
 //  Perhaps a good candidate to rewrite as a custom HTML element?
 
-import { DELETE_TASK } from "./store.js";
-
 export default class InboxList {
   constructor({tasks}) {
     this._tasks = tasks;
@@ -37,7 +35,7 @@ export default class InboxList {
       deleteButton.ariaLabel = `Delete ${item.name}`
       deleteButton.addEventListener("click", () => {
         if (window.confirm(`Are you sure that you want to delete "${item.name}"?`)) {
-          window.dispatchEvent(new CustomEvent(DELETE_TASK, { detail: item.id }))
+          window.dispatchEvent(new CustomEvent("TASK_DELETE_UI", { detail: item.id }))
         }
       })
 
