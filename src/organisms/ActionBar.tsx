@@ -1,9 +1,16 @@
-const ActionBar = ({addItem, addVector}) => {
-  const handleForm = (e, key, updateFunction) => {
+type voidFunction = (name:string) => void
+
+interface PropTypes {
+  addItem: voidFunction
+  addVector: voidFunction
+}
+
+const ActionBar = ({ addItem, addVector }:PropTypes) => {
+  const handleForm = (e:any, key:string, updateFunction:voidFunction) => {
     e.preventDefault();
 
     const form = new FormData(e.target);
-    const name = form.get(key)
+    const name = form.get(key) as string
 
     updateFunction(name)
 

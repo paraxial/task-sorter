@@ -15,3 +15,4 @@ export interface VectorItemMapping {
     unsorted: ItemId[]
   }
 }
+
