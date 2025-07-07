@@ -32,7 +32,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  padding: 0;
+  padding: 1rem;
   margin: 0;
 
   background: linear-gradient(180deg, var(--purple) 0%, var(--teal) 100%);
@@ -51,8 +51,34 @@ body {
 
 #root {
   display: grid;
+  gap: 10px;
   grid-template: 50px 1fr / repeat(6, 1fr);
   width: 100%;
+}
+
+.form-area {
+  grid-area: 1 / 1 / 1 / span 6;
+  display: flex;
+  gap: 2rem;
+}
+
+.item-viewer {
+  grid-area: 2 / span 1;
+  display: flex;
+  gap: 2rem;
+}
+
+.list-flow {
+  grid-area: 2 / 2 / 2 / span 5;
+  display: flex;
+  gap: 2rem;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 1rem;
 }
 
 @media (prefers-color-scheme: light) {

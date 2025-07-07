@@ -1,30 +1,36 @@
-const ActionBar = ({}) => {
-  // const handleNewList = (e: FormEvent<HTMLFormElement>) => {
-  const handleNewList = (e: any) => {
+const ActionBar = ({addItem, addVector}) => {
+  const handleForm = (e, key, updateFunction) => {
     e.preventDefault();
-    debugger
-    e.data;
+
+    const form = new FormData(e.target);
+    const name = form.get(key)
+
+    updateFunction(name)
+
+    e.target.reset()
+  }
+
+  const handleNewVector = (e: any) => {
+    handleForm(e, "newVector", addVector)
   }
   const handleNewItem = (e: any) => {
-    e.preventDefault();
-    debugger
-    e.data;
+    handleForm(e, "newItem", addItem)
   }
 
   return (
-    <section>
+    <section className="form-area card">
       <form onSubmit={handleNewItem}>
         <label>
           Add new task
-          <input name="new-task" />
+          <input required name="newItem" />
         </label>
         <button type="submit">Add</button>
       </form>
 
-      <form onSubmit={handleNewList}>
+      <form onSubmit={handleNewVector}>
         <label>
-          Add new list
-          <input name="new-list" />
+          Add new vector
+          <input required name="newVector" />
         </label>
         <button type="submit">Add</button>
       </form>

@@ -1,6 +1,7 @@
-const Lists = () => {
+const Lists = ({ vectorList, vectorItemMapping }) => {
+  console.log({ vectorItemMapping })
   return (
-    <section>
+    <section className="card list-flow">
     </section>
   )
 }
